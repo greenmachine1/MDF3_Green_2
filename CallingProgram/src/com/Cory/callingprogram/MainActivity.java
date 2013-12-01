@@ -1,7 +1,11 @@
 package com.Cory.callingprogram;
 
+import org.apache.http.protocol.HTTP;
+
 import android.os.Bundle;
 import android.app.Activity;
+import android.content.Intent;
+import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -15,13 +19,29 @@ public class MainActivity extends Activity {
         setContentView(R.layout.main);
         
         
-        // creating a button to potentially call the other program
+        // Thinking that the calling program will call upon an email
+        // app.  Ill try to create my own.
         Button button = (Button)findViewById(R.id.button1);
         button.setOnClickListener(new OnClickListener(){
 
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
+				
+				
+				Log.i("Clicked", "Yes...");
+				
+				// this intent will be sending something out as an email
+				// so my main program will have to handle the action type
+				// of send.
+				Intent emailIntent = new Intent(Intent.ACTION_SEND);
+				emailIntent.setType(HTTP.PLAIN_TEXT_TYPE);
+				emailIntent.putExtra(Intent.EXTRA_EMAIL, new String[] {"greenmachine1@fullsail.edu"});
+				emailIntent.putExtra(Intent.EXTRA_SUBJECT, "sent from my phone");
+				emailIntent.putExtra(Intent.EXTRA_TEXT, "Body of the email goes here");
+				
+				// starts the activity
+				startActivity(emailIntent);
 				
 			}
         	

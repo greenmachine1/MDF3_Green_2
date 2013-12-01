@@ -1,10 +1,8 @@
 package com.Cory.week_1;
 
-import android.net.Uri;
 import android.os.Bundle;
 import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
+
 import android.view.Menu;
 import android.view.Window;
 import android.view.WindowManager;
@@ -22,17 +20,9 @@ public class MainActivity extends Activity {
         
         setContentView(R.layout.main);
         
-        /*
-        // creates a uri number
-        Uri number = Uri.parse("tel:2093523633");
-        
-        // creates an intent to DIAL a number
-        Intent callIntent = new Intent(Intent.ACTION_DIAL, number);
-        
-        // starts the activity
-        startActivity(callIntent);
-        
-        */
+        // in my android manifest, I had to specify the name, category, and data
+        // to be used so that my app shows up in a list of all those to choose
+        // from
         
     }
 
