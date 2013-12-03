@@ -1,6 +1,8 @@
 package com.Cory.week_1;
 
 
+import java.lang.reflect.Array;
+
 import android.net.Uri;
 import android.os.Bundle;
 import android.app.Activity;
@@ -45,10 +47,13 @@ public class MainActivity extends Activity {
         	// the intent
         	Bundle dataString = intent.getExtras();
         	
+        	// grabbing my email string array
+        	String[] emailString = dataString.getStringArray(Intent.EXTRA_EMAIL);
+
         	String subjectString = dataString.get(Intent.EXTRA_SUBJECT).toString();
         	String bodyString = dataString.get(Intent.EXTRA_TEXT).toString();
         	
-        	
+        	emailAddress.setHint(emailString[0].toString());
         	subject.setHint(subjectString);
         	body.setHint(bodyString);
         	
