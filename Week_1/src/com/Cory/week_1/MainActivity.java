@@ -28,28 +28,54 @@ public class MainActivity extends Activity {
         // to be used so that my app shows up in a list of all those to choose
         // from.
         
+        Intent intent = getIntent();
+        try{
+        	
+        	Bundle dataString = intent.getExtras();
+        	
+        	String subjectString = dataString.get(Intent.EXTRA_SUBJECT).toString();
+        	String bodyString = dataString.get(Intent.EXTRA_TEXT).toString();
+        	
+        	Log.i("Email", subjectString);
+        	Log.i("Body", bodyString);
+        	
+        }catch(Exception e){
+        	Log.e("no data", e.toString());
+        }
         
+        
+        
+        
+        
+        
+        
+        
+        /*
         Intent intent = getIntent();
        
-        String data = intent.getType();
+        String type = intent.getType();
         
         // works to pass on the data type
-        if(data != null){
+        if(type != null){
         	
         	// this handles if the text is plain...
-        	if(data.equals("text/plain")){
+        	if(type.equals("text/plain")){
         		
         		Log.i("Type", "text plain");
         		
-        	// or not	
+        		intent.getExtras();
+        		
+        	// ...or not	
         	}else{
         		Log.i("Type", "different");
         	}
+        	
+        // what to do if there is no type available	
         }else{
         	Log.i("No Data", "No data");
         }
         
-        
+        */
         
        
         
