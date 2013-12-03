@@ -1,5 +1,6 @@
 package com.Cory.week_1;
 
+
 import android.net.Uri;
 import android.os.Bundle;
 import android.app.Activity;
@@ -26,17 +27,32 @@ public class MainActivity extends Activity {
         // in my android manifest, I had to specify the name, category, and data
         // to be used so that my app shows up in a list of all those to choose
         // from.
-        Intent intent = getIntent();
-        if(intent != null){
         
-        	if(intent.getType().equals("text/plain")){
-        		Log.i("text info", "Yes");
-        	}else if(!(intent.getType().equals("text/plain"))){
-        		Log.i("not text info", "Nope");
+        
+        Intent intent = getIntent();
+       
+        String data = intent.getType();
+        
+        // works to pass on the data type
+        if(data != null){
+        	
+        	// this handles if the text is plain...
+        	if(data.equals("text/plain")){
+        		
+        		Log.i("Type", "text plain");
+        		
+        	// or not	
         	}else{
-        		return;
+        		Log.i("Type", "different");
         	}
+        }else{
+        	Log.i("No Data", "No data");
         }
+        
+        
+        
+       
+        
     }
 
 
