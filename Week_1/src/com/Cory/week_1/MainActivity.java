@@ -10,9 +10,14 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.EditText;
 
 public class MainActivity extends Activity {
 
+	EditText emailAddress;
+	EditText subject;
+	EditText body;
+	
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,18 +34,31 @@ public class MainActivity extends Activity {
         // from.
         
         Intent intent = getIntent();
+        
+        emailAddress = (EditText)findViewById(R.id.email_address_text_field);
+        subject = (EditText)findViewById(R.id.subject_text_field);
+        body = (EditText)findViewById(R.id.body_text_field);
+        
         try{
         	
+        	// creating a bundle to hold all the extras that come along with
+        	// the intent
         	Bundle dataString = intent.getExtras();
         	
         	String subjectString = dataString.get(Intent.EXTRA_SUBJECT).toString();
         	String bodyString = dataString.get(Intent.EXTRA_TEXT).toString();
         	
+        	
+        	subject.setHint(subjectString);
+        	body.setHint(bodyString);
+        	
         	Log.i("Email", subjectString);
         	Log.i("Body", bodyString);
         	
         }catch(Exception e){
+        	
         	Log.e("no data", e.toString());
+        	
         }
         
         
