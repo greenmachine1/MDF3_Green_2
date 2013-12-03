@@ -29,8 +29,6 @@ public class MainActivity extends Activity {
 				// TODO Auto-generated method stub
 				
 				
-				Log.i("Clicked", "Yes...");
-				
 				// this intent will be sending something out as an email
 				// so my main program will have to handle the action type
 				// of send.
