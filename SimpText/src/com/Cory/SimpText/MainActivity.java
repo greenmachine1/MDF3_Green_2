@@ -46,10 +46,7 @@ public class MainActivity extends Activity {
         int finalWidth = (width / 2) - 90;
         
         // setting the top text padding
-        topText.setPadding(finalWidth, 0, 0, 0);
-        
-        
-        
+        topText.setPadding(finalWidth, 0, 0, 0);        
         
         // in my android manifest, I had to specify the name, category, and data
         // to be used so that my app shows up in a list of all those to choose
