@@ -42,36 +42,25 @@ public class MainActivity extends Activity {
 				// so my main program will have to handle the action type
 				// of send.
 				
+				// capturing my entry fields into texts
+				String sendText = sendTo.getText().toString();
+				String subjectText = subject.getText().toString();
+				String bodyText = body.getText().toString();
 				
-				
-				
-				Intent emailIntent = new Intent(Intent.ACTION_SEND);
-				emailIntent.setType(HTTP.PLAIN_TEXT_TYPE);
-				emailIntent.putExtra(Intent.EXTRA_EMAIL, new String[] {"greenmachine1@fullsail.edu"});
-				emailIntent.putExtra(Intent.EXTRA_SUBJECT, "sent from my phone");
-				emailIntent.putExtra(Intent.EXTRA_TEXT, "Body of the email goes here");
+				// inputting all my captured strings into the intent
+				Intent smsIntent = new Intent(Intent.ACTION_SEND);
+				smsIntent.setType(HTTP.PLAIN_TEXT_TYPE);
+				smsIntent.putExtra(Intent.EXTRA_EMAIL, new String[] {sendText});
+				smsIntent.putExtra(Intent.EXTRA_SUBJECT, subjectText);
+				smsIntent.putExtra(Intent.EXTRA_TEXT, bodyText);
 				
 				// starts the activity
-				startActivity(emailIntent);
+				startActivity(smsIntent);
 				
 			}
         	
         });
-        
-        
-        
-        
-        
-        
-        
-    }
-
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.main, menu);
-        return true;
+ 
     }
     
 }
