@@ -1,3 +1,11 @@
+/*
+ * Author: 			Cory Green
+ * 
+ * Project:			CallingProgram
+ * 
+ * Date:			Dec 4, 2013
+ * 
+ */
 package com.Cory.callingprogram;
 
 import org.apache.http.protocol.HTTP;

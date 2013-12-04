@@ -1,3 +1,11 @@
+/*
+ * Author: 			Cory Green
+ * 
+ * Project:			SimpText
+ * 
+ * Date:			Dec 4, 2013
+ * 
+ */
 package com.Cory.SimpText;
 
 import android.os.Bundle;
