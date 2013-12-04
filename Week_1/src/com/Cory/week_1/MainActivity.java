@@ -53,9 +53,9 @@ public class MainActivity extends Activity {
         	String subjectString = dataString.get(Intent.EXTRA_SUBJECT).toString();
         	String bodyString = dataString.get(Intent.EXTRA_TEXT).toString();
         	
-        	emailAddress.setHint(emailString[0].toString());
-        	subject.setHint(subjectString);
-        	body.setHint(bodyString);
+        	emailAddress.setText(emailString[0].toString());
+        	subject.setText(subjectString);
+        	body.setText(bodyString);
         	
         	Log.i("Email", subjectString);
         	Log.i("Body", bodyString);
