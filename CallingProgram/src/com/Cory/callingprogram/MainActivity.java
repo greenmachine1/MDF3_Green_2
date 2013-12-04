@@ -10,13 +10,22 @@ import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.EditText;
 
 public class MainActivity extends Activity {
+	
+	EditText sendTo;
+	EditText subject;
+	EditText body;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
+        
+        sendTo = (EditText)findViewById(R.id.send_to_text);
+        subject = (EditText)findViewById(R.id.subject_text);
+        body = (EditText)findViewById(R.id.body_text);
         
         
         // Thinking that the calling program will call upon an email
@@ -32,6 +41,10 @@ public class MainActivity extends Activity {
 				// this intent will be sending something out as an email
 				// so my main program will have to handle the action type
 				// of send.
+				
+				
+				
+				
 				Intent emailIntent = new Intent(Intent.ACTION_SEND);
 				emailIntent.setType(HTTP.PLAIN_TEXT_TYPE);
 				emailIntent.putExtra(Intent.EXTRA_EMAIL, new String[] {"greenmachine1@fullsail.edu"});
