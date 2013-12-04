@@ -2,15 +2,23 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical" >
+    android:orientation="vertical"
+    android:showDividers="end" >
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="SimpText"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <EditText
         android:id="@+id/email_address_text_field"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="30.0dp"
         android:ems="10" 
         android:hint="Email Address"/>
-
 
     <EditText
         android:id="@+id/body_text_field"
@@ -18,12 +26,13 @@
         android:layout_height="wrap_content"
         android:layout_weight="0.44"
         android:ems="10"
-        android:hint="Main Body" />
+        android:hint="Main Body"/>
 
     <Button
         android:id="@+id/send_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:paddingLeft="0dp"
         android:text="Send Text" />
 
 </LinearLayout>

@@ -26,17 +26,13 @@ public class MainActivity extends Activity {
         sendTo = (EditText)findViewById(R.id.send_to_text);
         subject = (EditText)findViewById(R.id.subject_text);
         body = (EditText)findViewById(R.id.body_text);
-        
-        
-        // Thinking that the calling program will call upon an email
-        // app.  Ill try to create my own.
+
+        // button used to send off my info to a different app
         Button button = (Button)findViewById(R.id.button1);
         button.setOnClickListener(new OnClickListener(){
 
 			@Override
-			public void onClick(View v) {
-				// TODO Auto-generated method stub
-				
+			public void onClick(View v){
 				
 				// this intent will be sending something out as an email
 				// so my main program will have to handle the action type

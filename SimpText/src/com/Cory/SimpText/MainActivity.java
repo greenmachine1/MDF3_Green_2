@@ -12,9 +12,11 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 public class MainActivity extends Activity {
 
+	TextView topText;
 	EditText emailAddress;
 	EditText body;
 	
@@ -31,6 +33,9 @@ public class MainActivity extends Activity {
 		WindowManager.LayoutParams.FLAG_FULLSCREEN);
         
         setContentView(R.layout.main);
+        
+        topText = (TextView)findViewById(R.id.textView1);
+        topText.setPadding(100, 0, 0, 0);
         
         // in my android manifest, I had to specify the name, category, and data
         // to be used so that my app shows up in a list of all those to choose
@@ -78,17 +83,19 @@ public class MainActivity extends Activity {
 
     }
     
+    
+    
     // made a method for actually sending out the message
     public void sendTextMessage(){
     	
     	// calling on my sms manager
     	SmsManager sms = SmsManager.getDefault();
     	
+    	// grabbing the most current info from the text fields
     	String sendAddress = emailAddress.getText().toString();
     	String bodyText = body.getText().toString();
     	
     	// method that actually sends out the text message
-    	
         sms.sendTextMessage(sendAddress, null, bodyText, null, null);
     }
     
