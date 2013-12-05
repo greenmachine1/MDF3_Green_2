@@ -35,6 +35,9 @@ public class MainActivity extends Activity {
 	String emailStringForComparison;
 	String bodyStringForComparaison;
 	
+	String sendAddress;
+	String bodyText;
+	
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -89,14 +92,24 @@ public class MainActivity extends Activity {
         	
         }
         
-     // creating my send button
+        // creating my send button
     	Button sendButton = (Button)findViewById(R.id.send_button);
     	sendButton.setOnClickListener(new OnClickListener(){
 
 			@Override
 			public void onClick(View v) {
 				
-					sendTextMessage();
+				// grabbing the most current info from the text fields
+				
+				// this is giving a false positive
+		    	sendAddress = emailAddress.getText().toString();
+		    	bodyText = body.getText().toString();
+				if(!((sendAddress == null) && (bodyText == null))){
+					Log.i("Both fields are ", "have something");
+					//sendTextMessage();
+				}else{
+					Log.i("Nope", "Nope");
+				}
 			}
     		
     	});
@@ -110,21 +123,11 @@ public class MainActivity extends Activity {
     	
     	// calling on my sms manager
     	SmsManager sms = SmsManager.getDefault();
-    	
-    
-    	// grabbing the most current info from the text fields
-    	String sendAddress = emailAddress.getText().toString();
-    	String bodyText = body.getText().toString();
-    	
-    	
-    	if((sendAddress != "") && (bodyText != "")){
-    		// method that actually sends out the text message
-    		sms.sendTextMessage(sendAddress, null, bodyText, null, null);
-    		Log.i("message is successful", "Yes");
-    		
-    	}else if ((sendAddress == "") || (bodyText == "")){
-    		Log.i("Message failed", "Nope");
-    	}
+
+
+    	// method that actually sends out the text message
+    	sms.sendTextMessage(sendAddress, null, bodyText, null, null);
+
     }
     
 }
