@@ -22,6 +22,7 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class MainActivity extends Activity {
 
@@ -101,18 +102,33 @@ public class MainActivity extends Activity {
 				// this is giving a false positive
 		    	sendAddress = emailAddress.getText().toString();
 		    	bodyText = body.getText().toString();
-		    	
-		    	//Log.i("email: " + sendAddress, "body: " + bodyText);
+
+		    	// logic for deciding if there is no address, no message,
+		    	// or both
 		    	
 				if((sendAddress.isEmpty()) || (bodyText.isEmpty())){
 					
-					Log.i("Nope", "Nope");
-					
+					if((sendAddress.isEmpty() && (!(bodyText.isEmpty())))){
+						
+						createToast("Please enter in an address to send to.");
+						
+					}else if((bodyText.isEmpty() && (!(sendAddress.isEmpty())))){
+						
+						createToast("Please enter in a message.");
+						
+					}else if((bodyText.isEmpty() && (sendAddress.isEmpty()))){
+						
+						createToast("Please enter an address and a message.");
+						
+					}
+
+				// if both fields are full, then finally send the text
 				}else{
-					
-					Log.i("Message send", "Yes");
+
 					try{
 						sendTextMessage();
+						
+						createToast("Message Sent");
 						
 					}catch(Exception e){
 						
@@ -122,6 +138,14 @@ public class MainActivity extends Activity {
 			}
     		
     	});
+
+    }
+    
+    // shows the message
+    public void createToast(String message){
+    	
+    	Toast toast = Toast.makeText(this, message, Toast.LENGTH_SHORT);
+    	toast.show();
 
     }
     
