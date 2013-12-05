@@ -32,6 +32,9 @@ public class MainActivity extends Activity {
 	String[] emailString;
 	String bodyString;
 	
+	String emailStringForComparison;
+	String bodyStringForComparaison;
+	
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -88,8 +91,7 @@ public class MainActivity extends Activity {
 				@Override
 				public void onClick(View v) {
 					
-					// calling on my sendTextMessage method
-					sendTextMessage();
+						sendTextMessage();
 				}
         		
         	});
@@ -110,12 +112,20 @@ public class MainActivity extends Activity {
     	// calling on my sms manager
     	SmsManager sms = SmsManager.getDefault();
     	
+    
     	// grabbing the most current info from the text fields
     	String sendAddress = emailAddress.getText().toString();
     	String bodyText = body.getText().toString();
     	
-    	// method that actually sends out the text message
-        sms.sendTextMessage(sendAddress, null, bodyText, null, null);
+    	
+    	if((sendAddress != null) && (bodyText != null)){
+    		// method that actually sends out the text message
+    		sms.sendTextMessage(sendAddress, null, bodyText, null, null);
+    		Log.i("message is successful", "Yes");
+    		
+    	}else{
+    		Log.i("Message failed", "Nope");
+    	}
     }
     
 }
