@@ -83,21 +83,6 @@ public class MainActivity extends Activity {
         	emailAddress.setText(emailString[0].toString());
         	body.setText(bodyString);
         	
-        	
-        	// creating my send button
-        	/*
-        	Button sendButton = (Button)findViewById(R.id.send_button);
-        	sendButton.setOnClickListener(new OnClickListener(){
-
-				@Override
-				public void onClick(View v) {
-					
-						sendTextMessage();
-				}
-        		
-        	});
-        	*/
-        	
         }catch(Exception e){
         	
         	Log.e("no data", e.toString());
