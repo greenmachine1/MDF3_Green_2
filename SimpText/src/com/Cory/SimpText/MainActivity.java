@@ -31,10 +31,7 @@ public class MainActivity extends Activity {
 	
 	String[] emailString;
 	String bodyString;
-	
-	String emailStringForComparison;
-	String bodyStringForComparaison;
-	
+
 	String sendAddress;
 	String bodyText;
 	
@@ -104,11 +101,23 @@ public class MainActivity extends Activity {
 				// this is giving a false positive
 		    	sendAddress = emailAddress.getText().toString();
 		    	bodyText = body.getText().toString();
-				if(!((sendAddress == null) && (bodyText == null))){
-					Log.i("Both fields are ", "have something");
-					//sendTextMessage();
-				}else{
+		    	
+		    	//Log.i("email: " + sendAddress, "body: " + bodyText);
+		    	
+				if((sendAddress.isEmpty()) || (bodyText.isEmpty())){
+					
 					Log.i("Nope", "Nope");
+					
+				}else{
+					
+					Log.i("Message send", "Yes");
+					try{
+						sendTextMessage();
+						
+					}catch(Exception e){
+						
+					}
+					
 				}
 			}
     		
