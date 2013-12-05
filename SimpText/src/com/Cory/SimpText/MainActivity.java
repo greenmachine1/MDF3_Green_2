@@ -85,6 +85,7 @@ public class MainActivity extends Activity {
         	
         	
         	// creating my send button
+        	/*
         	Button sendButton = (Button)findViewById(R.id.send_button);
         	sendButton.setOnClickListener(new OnClickListener(){
 
@@ -95,12 +96,25 @@ public class MainActivity extends Activity {
 				}
         		
         	});
+        	*/
         	
         }catch(Exception e){
         	
         	Log.e("no data", e.toString());
         	
         }
+        
+     // creating my send button
+    	Button sendButton = (Button)findViewById(R.id.send_button);
+    	sendButton.setOnClickListener(new OnClickListener(){
+
+			@Override
+			public void onClick(View v) {
+				
+					sendTextMessage();
+			}
+    		
+    	});
 
     }
     
@@ -118,12 +132,12 @@ public class MainActivity extends Activity {
     	String bodyText = body.getText().toString();
     	
     	
-    	if((sendAddress != null) && (bodyText != null)){
+    	if((sendAddress != "") && (bodyText != "")){
     		// method that actually sends out the text message
     		sms.sendTextMessage(sendAddress, null, bodyText, null, null);
     		Log.i("message is successful", "Yes");
     		
-    	}else{
+    	}else if ((sendAddress == "") || (bodyText == "")){
     		Log.i("Message failed", "Nope");
     	}
     }
