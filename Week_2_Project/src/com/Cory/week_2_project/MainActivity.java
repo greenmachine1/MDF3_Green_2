@@ -4,6 +4,10 @@ import android.os.Bundle;
 import android.app.Activity;
 import android.view.Menu;
 
+// my project will consist of a few seperate things that meet the criteria
+// for this weeks assignment.  I plan to make a sort-of treasure hunt style 
+// game.  For now, the locations will be hard coded, but could eventually 
+// be uploaded from an online database for users to go out and search for.
 public class MainActivity extends Activity {
 
     @Override
