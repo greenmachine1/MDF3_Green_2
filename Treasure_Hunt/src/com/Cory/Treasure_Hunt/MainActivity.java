@@ -14,6 +14,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 // my project will consist of a few seperate things that meet the criteria
 // for this weeks assignment.  I plan to make a sort-of treasure hunt style 
@@ -25,6 +26,7 @@ import android.widget.TextView;
 // and audio playback for this project
 public class MainActivity extends Activity implements LocationListener {
 
+	
 	LocationManager locationManager;
 	TextView longitudeText;
 	TextView latitudeText;
@@ -42,6 +44,8 @@ public class MainActivity extends Activity implements LocationListener {
 	
 	float treasureValueForLongitude;
 	float treasureValueForLatitude;
+	
+	Toast toast;
 
 	
     @Override
@@ -54,7 +58,7 @@ public class MainActivity extends Activity implements LocationListener {
         format.setMaximumFractionDigits(4);
 
         treasureValueForLatitude = 37.9837f;
-        treasureValueForLongitude = -120.9837f;
+        treasureValueForLongitude = -120.3805f;
         
         locationManager = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
         
@@ -107,33 +111,63 @@ public class MainActivity extends Activity implements LocationListener {
 		if((treasureValueForLatitude + 0.0001f) < valueForLatitude){
 			Log.i("greater than treasure value", "yes");
 			isInRoomText.setText("is greater than lat treasure Value");
+			
+			this.notificationDisplay("Greater than treasure location on longitude, move back.");
 		}	
 		// treasure value becomes 37.9836(down from 37.9837)
 		else if((treasureValueForLatitude - 0.0001f) > valueForLatitude){
 			Log.i("less than treasure value", "Yes");
 			isInRoomText.setText("is Less than lat treasure Value");
+			
+			this.notificationDisplay("Less than treasure location on longitude, move forwards.");
 		}
 		// treaure value is the same as value
 		else if(treasureValueForLatitude == valueForLatitude){
 			Log.i("is equal to treasure value", "Yes");
 			isInRoomText.setText("is equal to lat treasure Value");
+			
+			this.notificationDisplay("You are equal to the treasure, STOP and focus on your latitude");
 		}
 		
-		if((treasureValueForLongitude + 0.0001f) > valueForLongitude){
+		if((treasureValueForLongitude + 0.0001f) < valueForLongitude){
 			Log.i("greater than treasure value", "yes");
 			isInRoom2Text.setText("is greater than long treasure value");
+			
+			this.notificationDisplay("Less than treasure location on latitude, move to the right");
 		}
-		else if((treasureValueForLongitude - 0.0001f) < valueForLongitude){
+		else if((treasureValueForLongitude - 0.0001f) > valueForLongitude){
 			Log.i("Less than treasure value", "yes");
 			isInRoom2Text.setText("is Less than long treasure value");
+			
+			this.notificationDisplay("Greater than treasure location on latitude, move to the left");
 		}
 		else if (treasureValueForLongitude == valueForLongitude){
 			Log.i("Equal to treasure value", "yes");
 			isInRoom2Text.setText("is Equal to long treasure value");
+			
+			this.notificationDisplay("You are equal to the treasure, stop and focus on your longitude");
+		}
+		else if((treasureValueForLongitude == valueForLongitude) && (treasureValueForLatitude == valueForLatitude)){
+			Log.i("Both are equal", "Your on treasure!");
+			
+			this.notificationDisplay("You found the treasure!");
 		}
 		
 		
 	}
+	
+	public void notificationDisplay(String toDisplay){
+		Toast toast = Toast.makeText(this, toDisplay, Toast.LENGTH_SHORT);
+    	toast.show();
+	}
+	
+	public void onStop(){
+		
+		locationManager.removeUpdates(this);
+		
+		super.onStop();
+	}
+	
 
 
 	@Override
