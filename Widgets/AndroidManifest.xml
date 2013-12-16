@@ -24,17 +24,10 @@
         </activity>
         <receiver android:name="ExampleAppWidgetProvider">
             <intent-filter>
-                <action android:name="android.appwidget.action.APPWIDGET_UPDATE"/>
+                <action android:name="android.appwidget.action.APPWIDGET_CONFIGURE"/>
             </intent-filter>
-            <meta-data android:name="android.appwidget.provider"
-                android:resource="@xml/example_appwidget_info"/>
-            
-            
             
         </receiver>
-        
-        
-        
     </application>
 
 </manifest>
