@@ -15,6 +15,7 @@ public class WidgetProvider extends AppWidgetProvider{
 		final int N = appWidgetIds.length;
 		
 		Log.i("Length", "" + N);
+		
 		for(int i = 0; i < N; i++){
 		
 			int appWidgetId = appWidgetIds[i];
