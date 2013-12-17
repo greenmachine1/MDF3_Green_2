@@ -4,12 +4,25 @@ import android.os.Bundle;
 import android.app.Activity;
 import android.view.Menu;
 
+
+// this will house the main loading screen.
+// it will have at least 2 called activities from the 
+// action bar
 public class MainActivity extends Activity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.main);
+		
+		
+		
+		
+		
+		
+		
+		
+		
 	}
 
 	@Override
