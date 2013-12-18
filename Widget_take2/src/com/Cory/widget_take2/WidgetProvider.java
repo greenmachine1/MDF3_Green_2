@@ -2,21 +2,30 @@ package com.Cory.widget_take2;
 
 
 import com.Cory.JSON.FileManager;
+import com.Cory.JSON.JSON;
 
 import android.app.Activity;
 import android.appwidget.AppWidgetManager;
 import android.appwidget.AppWidgetProvider;
 import android.content.Context;
+import android.content.Intent;
+import android.os.Handler;
+import android.os.Message;
+import android.os.Messenger;
 import android.util.Log;
 import android.widget.RemoteViews;
 
 public class WidgetProvider extends AppWidgetProvider{
+	
 	FileManager newFileManager;
+	String fileName = "JSON_file.txt";
+
 
 	
 	// called everytime the widget updates which is every 30 minutes
-	public void onUpdate(Context context, AppWidgetManager appWidgetManager, int[] appWidgetIds){
+	public void onUpdate (Context context, AppWidgetManager appWidgetManager, int[] appWidgetIds){
 		
+		newFileManager = new FileManager();
 		
 		// iterating through each addWidgetId
 		final int N = appWidgetIds.length;
@@ -30,19 +39,18 @@ public class WidgetProvider extends AppWidgetProvider{
 		
 			appWidgetManager.updateAppWidget(appWidgetId, remoteView);
 			
-			// pulling the currency of origin so I can use it with my json data
-			try{
-				String currencyOrigin = newFileManager.readStringFile(context, "currency_origin.txt").toString();
-				Log.i("currency", currencyOrigin);
-			}catch(Exception e){
-				//Log.e("error", e.getMessage().toString());
+			if(newFileManager.readStringFile(context, "currency_origin.txt") != null){
+				String currencyString = newFileManager.readStringFile(context, "currency_origin.txt");
+				Log.i("thing", currencyString);
 			}
-			
-			
 			
 		}
 		
+		
+		
 	}
+	
+	
 	
 	public void onDelete(Context context, int[] appWidgetIds){
 		
