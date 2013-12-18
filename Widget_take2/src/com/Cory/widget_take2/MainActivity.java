@@ -1,5 +1,6 @@
 package com.Cory.widget_take2;
 
+import com.Cory.JSON.FileManager;
 import com.Cory.JSON.JSON;
 
 import android.os.Bundle;
@@ -23,6 +24,7 @@ import android.widget.Button;
 public class MainActivity extends Activity {
 	
 	Context _context;
+	String fileName = "JSON_file.txt";
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -30,7 +32,7 @@ public class MainActivity extends Activity {
 		setContentView(R.layout.main);
 		
 		_context = this;
-		
+
 		
 		Button goButton = (Button)this.findViewById(R.id.main_Button);
 		goButton.setOnClickListener(new OnClickListener(){
@@ -51,8 +53,9 @@ public class MainActivity extends Activity {
 						String returnedObjectString = returnedObject.toString();
 						
 						if(message.arg1 == RESULT_OK && returnedObject != null){
-							
-							
+
+							FileManager newFileManager = new FileManager();
+							newFileManager.writeStringFile(_context, fileName, returnedObjectString);
 							
 							//text.setText(m_file.readStringFile(_context, fileName));
 							

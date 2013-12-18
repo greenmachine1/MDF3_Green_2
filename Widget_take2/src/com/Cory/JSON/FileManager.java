@@ -13,7 +13,7 @@ public class FileManager {
 	private static FileManager m_instance;
 	
 	// constructor
-	private FileManager(){
+	public FileManager(){
 		
 	}
 	
