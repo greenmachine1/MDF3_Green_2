@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/currency_type"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="Select Your Currency"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+    
+<RadioGroup 
+    	android:layout_width="fill_parent"
+    	android:layout_height="wrap_content"
+    	android:id="@+id/currency_group">
+    <RadioButton
+        android:id="@+id/us_radio_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="USA" 
+        android:checked="true"/>
+
+    <RadioButton
+        android:id="@+id/euro_radio_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="EUR" />
+
+    <RadioButton
+        android:id="@+id/gdp_radio_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="GDP" />
+</RadioGroup>
+    <TextView
+        android:id="@+id/refresh_rate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:text="Select Your Refresh Rate (in minutes)"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+<RadioGroup 
+    	android:layout_width="fill_parent"
+    	android:layout_height="wrap_content"
+    	android:id="@+id/refresh_rate_group"
+    	>
+    <RadioButton
+        android:id="@+id/thirty_minutes_radio_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="30" 
+        android:checked="true"/>
+
+    <RadioButton
+        android:id="@+id/one_hour_radio_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="60" />
+
+    <RadioButton
+        android:id="@+id/six_hour_radio_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="360" />
+
+    <RadioButton
+        android:id="@+id/twenty_four_hour_radio_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="1440" />
+</RadioGroup>
+    <Button
+        android:id="@+id/done_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="Done" />
+
+</LinearLayout>

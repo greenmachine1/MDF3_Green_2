@@ -23,6 +23,9 @@ public class WidgetConfigActivity extends Activity implements OnClickListener{
 	RadioGroup radioGroup1;
 	RadioGroup radioGroup2;
 	
+	String currencySelected;
+	String refreshRate;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState){
 		super.onCreate(savedInstanceState);
@@ -38,33 +41,30 @@ public class WidgetConfigActivity extends Activity implements OnClickListener{
 		// selecting my radiogroup1
 		radioGroup1 = (RadioGroup)this.findViewById(R.id.currency_group);
 		radioGroup2 = (RadioGroup)this.findViewById(R.id.refresh_rate_group);
-		
-		
-		
-		
+	
 	}
 
 	// this is the done button 
 	@Override
 	public void onClick(View v) {
-		// TODO Auto-generated method stub
-		RadioButton selectedButton = (RadioButton)findViewById(radioGroup1.getCheckedRadioButtonId());
-		Log.i("Button", selectedButton.getText().toString());
 		
+		// gathering the radio button input
+		RadioButton selectedButton = (RadioButton)findViewById(radioGroup1.getCheckedRadioButtonId());
+
 		RadioButton selectedButtonAgain = (RadioButton)findViewById(radioGroup2.getCheckedRadioButtonId());
+		
+		currencySelected = selectedButton.getText().toString();
+		refreshRate = selectedButtonAgain.getText().toString();
+		
+		
+		Log.i("Button", selectedButton.getText().toString());
 		Log.i("Button", selectedButtonAgain.getText().toString());
 		
+		// so basically what I need to do next, is 1). be able to select a different
+		// refresh rate for the widget.
+		// then be able to access the api and pull info from it to the widget.
 		
-		
-	}
-	
 
-	/*
-	@Override
-	public void onClick(View v) {
-		// TODO Auto-generated method stub
-		
-		
 		Bundle extras = getIntent().getExtras();
 		if(extras != null){
 			
@@ -73,20 +73,15 @@ public class WidgetConfigActivity extends Activity implements OnClickListener{
 			
 			// if we get a valid widgetID back then...
 			if(widgetId != AppWidgetManager.INVALID_APPWIDGET_ID){
-				
-				
-				
-				
-				
-				
-				// ... we send off the user input to the front end
-				// of the widget.
-				String userInputString = userInput.getText().toString();
+
 				
 				// grabbing my widget text view and buttons
 				RemoteViews remoteView = new RemoteViews(this.getPackageName(),R.layout.widget_layout);
 				
-				remoteView.setTextViewText(R.id.days_textview, userInputString);
+				remoteView.setTextViewText(R.id.days_textview, currencySelected + " " + refreshRate);
+				
+				// need to create an alarm that I can configure to different times that calls upon the update
+				// portion
 				
 				AppWidgetManager.getInstance(this).updateAppWidget(widgetId, remoteView);
 				
@@ -105,13 +100,7 @@ public class WidgetConfigActivity extends Activity implements OnClickListener{
 			
 			
 		}
-		
-		
-		
-		
-		
+				
 	}
-	*/
-	
 
 }
