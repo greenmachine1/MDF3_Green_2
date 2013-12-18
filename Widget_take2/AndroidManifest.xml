@@ -7,6 +7,9 @@
     <uses-sdk
         android:minSdkVersion="11"
         android:targetSdkVersion="18" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
 
     <application
         android:allowBackup="true"
@@ -35,6 +38,7 @@
             <meta-data android:name="android.appwidget.provider"
                 android:resource="@xml/my_widget"/>
         </receiver>
+        <service android:name="com.Cory.JSON.JSON"></service>
     </application>
 
 </manifest>

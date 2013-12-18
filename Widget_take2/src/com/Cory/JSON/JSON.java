@@ -25,8 +25,8 @@ import android.util.Log;
 
 public class JSON extends IntentService{
 
-	public static final String NAME_OF_BAND = "messenger";
-	public static final String KEY_OF_THINGS = "key";
+	public static final String NAME = "messenger";
+	public static final String KEY = "key";
 	
 	public JSON() {
 		super("JSON");
@@ -36,17 +36,16 @@ public class JSON extends IntentService{
 	@Override
 	protected void onHandleIntent(Intent intent) {
 		
-		// this has to do with my messenger from the main activity
+		
 		Bundle extras = intent.getExtras();
 		
-		// loading in the passed in name of the band we wish to get more info on.
-		Messenger messenger = (Messenger) extras.get(NAME_OF_BAND);
-		String keyOfThings = (String) extras.get(KEY_OF_THINGS);
+		Messenger messenger = (Messenger) extras.get(NAME);
+		//String keyOfThings = (String) extras.get(KEY);
 
 		// obtaining my object that gets returned from my Json Data
 		Message message = Message.obtain();
 		message.arg1 = Activity.RESULT_OK;
-		message.obj = "messenger " + returnJsonData(keyOfThings);
+		message.obj = "messenger " + returnJsonData();
 		
 		try {
 			messenger.send(message);
@@ -58,15 +57,13 @@ public class JSON extends IntentService{
 		
 	}
 	
-	// method used to get the JSON data
-	public String returnJsonData(String userInput){
+	// get the json data
+	public String returnJsonData(){
 		
 		// creation of url
-		String completeURL = "https://itunes.apple.com/search?term=" + userInput + "&entity=musicArtist&limit=1";
+		String completeURL = "https://api.coindesk.com/v1/bpi/currentprice.json";
 		
 		URL finalURL = null;
-		//try{
-			// dont actually need my UTF-8 involved in the url
 			try {
 				finalURL = new URL(completeURL);
 			} catch (MalformedURLException e) {
