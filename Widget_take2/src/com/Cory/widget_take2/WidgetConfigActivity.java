@@ -162,8 +162,14 @@ public class WidgetConfigActivity extends Activity implements OnClickListener{
 			// passing in user input to lookup
 			currencyObject = resultsObject.getJSONObject(currencyType);
 			
+			// writting the currency origin so that in my widget provider
+			// I can look this up, read it, then pull data again from my
+			// api
+			newFileManager.writeStringFile(this, "currency_origin.txt", currencyType);
+			
 			// gets the amount object
 			amount = currencyObject.getString("rate").toString();
+			
 			if(currencyType.equals("USD")){
 				symbol = "$";
 			}else if(currencyType.equals("EUR")){

@@ -39,6 +39,7 @@
                 android:resource="@xml/my_widget"/>
         </receiver>
         <service android:name="com.Cory.JSON.JSON"></service>
+        <activity android:name="About"></activity>
     </application>
 
 </manifest>

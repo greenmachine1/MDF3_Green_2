@@ -66,10 +66,18 @@ public class MainActivity extends Activity {
 		case R.id.first:
 			// do something here
 			Log.i("First action bar selected", "True");
+			
+			Intent first = new Intent(this, About.class);
+			startActivity(first);
+			
 			return true;
 		case R.id.about:
 			// do something here
 			Log.i("About action bar selected", "True");
+			
+			Intent about = new Intent(this, About.class);
+			startActivity(about);
+			
 			return true;
 		default:
 				return super.onOptionsItemSelected(item);
