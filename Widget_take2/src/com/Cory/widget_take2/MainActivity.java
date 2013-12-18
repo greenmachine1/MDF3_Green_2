@@ -24,7 +24,6 @@ import android.widget.Button;
 public class MainActivity extends Activity {
 	
 	Context _context;
-	String fileName = "JSON_file.txt";
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -40,45 +39,8 @@ public class MainActivity extends Activity {
 			@Override
 			public void onClick(View v) {
 
-				// my handler.  Handles the return info
-				final Handler JsonHandler = new Handler(){
-
-					@Override
-					public void handleMessage(Message message){
-						
-						// what gets returned from the called service
-						Object returnedObject = message.obj;
-						
-						// casting the object to a string
-						String returnedObjectString = returnedObject.toString();
-						
-						if(message.arg1 == RESULT_OK && returnedObject != null){
-
-							FileManager newFileManager = new FileManager();
-							newFileManager.writeStringFile(_context, fileName, returnedObjectString);
-							
-							//text.setText(m_file.readStringFile(_context, fileName));
-							
-							Log.i("object", returnedObjectString);
-					        
-					       
-						}
-					}
-		    		
-		    	}; 
-
-				// creation of my messenger to the service
-		    	Messenger jsonMessenger = new Messenger(JsonHandler);
-				
-				Intent myServiceIntent = new Intent(_context, JSON.class);
-				
-				// basically this passes info to my service
-				myServiceIntent.putExtra("messenger", jsonMessenger);
-				startService(myServiceIntent);
-
+			
 			}
-			
-			
 		});
 		
 		
