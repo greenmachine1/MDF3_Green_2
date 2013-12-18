@@ -46,36 +46,8 @@
         android:paddingBottom="10dp"
         android:text="Select Your Refresh Rate (in minutes)"
         android:textAppearance="?android:attr/textAppearanceLarge" />
-<RadioGroup 
-    	android:layout_width="fill_parent"
-    	android:layout_height="wrap_content"
-    	android:id="@+id/refresh_rate_group"
-    	>
-    <RadioButton
-        android:id="@+id/thirty_minutes_radio_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="30" 
-        android:checked="true"/>
 
-    <RadioButton
-        android:id="@+id/one_hour_radio_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="60" />
 
-    <RadioButton
-        android:id="@+id/six_hour_radio_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="360" />
-
-    <RadioButton
-        android:id="@+id/twenty_four_hour_radio_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="1440" />
-</RadioGroup>
     <Button
         android:id="@+id/done_button"
         android:layout_width="match_parent"

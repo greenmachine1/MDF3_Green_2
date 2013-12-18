@@ -11,7 +11,6 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioGroup;
-import android.widget.RadioGroup.OnCheckedChangeListener;
 import android.widget.RemoteViews;
 import android.widget.RadioButton;
 
@@ -40,7 +39,7 @@ public class WidgetConfigActivity extends Activity implements OnClickListener{
 
 		// selecting my radiogroup1
 		radioGroup1 = (RadioGroup)this.findViewById(R.id.currency_group);
-		radioGroup2 = (RadioGroup)this.findViewById(R.id.refresh_rate_group);
+
 	
 	}
 
@@ -50,21 +49,17 @@ public class WidgetConfigActivity extends Activity implements OnClickListener{
 		
 		// gathering the radio button input
 		RadioButton selectedButton = (RadioButton)findViewById(radioGroup1.getCheckedRadioButtonId());
-
-		RadioButton selectedButtonAgain = (RadioButton)findViewById(radioGroup2.getCheckedRadioButtonId());
 		
 		currencySelected = selectedButton.getText().toString();
-		refreshRate = selectedButtonAgain.getText().toString();
+
 		
 		
 		Log.i("Button", selectedButton.getText().toString());
-		Log.i("Button", selectedButtonAgain.getText().toString());
-		
-		// so basically what I need to do next, is 1). be able to select a different
-		// refresh rate for the widget.
-		// then be able to access the api and pull info from it to the widget.
-		
 
+		
+		// so basically what I need to do next, is 1). 
+		// be able to access the api and pull info from it to the widget.
+		
 		Bundle extras = getIntent().getExtras();
 		if(extras != null){
 			
@@ -78,27 +73,24 @@ public class WidgetConfigActivity extends Activity implements OnClickListener{
 				// grabbing my widget text view and buttons
 				RemoteViews remoteView = new RemoteViews(this.getPackageName(),R.layout.widget_layout);
 				
-				remoteView.setTextViewText(R.id.days_textview, currencySelected + " " + refreshRate);
-				
-				// need to create an alarm that I can configure to different times that calls upon the update
-				// portion
-				
+				remoteView.setTextViewText(R.id.days_textview, currencySelected);
+
 				AppWidgetManager.getInstance(this).updateAppWidget(widgetId, remoteView);
+			
 				
 				Intent resultValue = new Intent();
 				
 				resultValue.putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, widgetId);
 				setResult(RESULT_OK, resultValue);
+				
+				
 				finish();
 				
 				
 				
 				
 			}
-			
-			
-			
-			
+	
 		}
 				
 	}
