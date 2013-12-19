@@ -10,6 +10,7 @@ import android.appwidget.AppWidgetManager;
 import android.appwidget.AppWidgetProvider;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.os.Messenger;
@@ -20,6 +21,8 @@ public class WidgetProvider extends AppWidgetProvider{
 	
 	FileManager newFileManager;
 	String fileName = "JSON_file.txt";
+	
+	
 
 
 	
@@ -65,7 +68,7 @@ public class WidgetProvider extends AppWidgetProvider{
 		
 		
 	}
-	
+		
 	
 	
 	public void onDelete(Context context, int[] appWidgetIds){
