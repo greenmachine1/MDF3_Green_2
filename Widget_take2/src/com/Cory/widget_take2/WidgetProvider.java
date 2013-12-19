@@ -1,6 +1,8 @@
 package com.Cory.widget_take2;
 
 
+import org.json.JSONObject;
+
 import com.Cory.JSON.FileManager;
 import com.Cory.JSON.JSON;
 import com.Cory.JSON.JSONProvider;
@@ -22,7 +24,7 @@ public class WidgetProvider extends AppWidgetProvider{
 	FileManager newFileManager;
 	String fileName = "JSON_file.txt";
 	
-	
+	String amount;
 
 
 	
@@ -38,31 +40,37 @@ public class WidgetProvider extends AppWidgetProvider{
 			int appWidgetId = appWidgetIds[i];
 			RemoteViews remoteView = new RemoteViews(context.getPackageName(), R.layout.widget_layout);
 			
-			// this will display the modified amount
-			remoteView.setTextViewText(R.id.days_textview, "Updated");
-		
 			appWidgetManager.updateAppWidget(appWidgetId, remoteView);
 			
 			// this is used to get the currency so that I can use it for another
 			// json call
-			if(newFileManager.readStringFile(context, "currency_origin.txt") != null){
-				String currencyString = newFileManager.readStringFile(context, "currency_origin.txt");
-
+			if(newFileManager.readStringFile(context, fileName) != null){
+				String jsonFile = newFileManager.readStringFile(context, fileName);
 				
-				// not sure whats wrong here.  I am not getting a return from 
-				// my asyncTask
-				JSONProvider newJSONProvider = new JSONProvider();
-				newJSONProvider.returnJsonData("USD");
+				// setting up my JSONObjects
+				JSONObject jsonObject = null;
+				JSONObject resultsObject = null;
+				JSONObject currencyObject = null;
 				
+				try{
+					
+					// parsing out my json data
+					jsonObject = new JSONObject(jsonFile);
+					resultsObject = jsonObject.getJSONObject("bpi");
+					
+					amount = currencyObject.getString("rate").toString();
+					
+					// updating my widget
+					//remoteView.setTextViewText(R.id.days_textview, amount);
+					
+				}catch(Exception e){
+					
+				}
 				
+				// updating my widget
+				remoteView.setTextViewText(R.id.days_textview, amount);
 			}
-			
-			
-			
-			
-			
-			
-			
+
 		}
 		
 		
