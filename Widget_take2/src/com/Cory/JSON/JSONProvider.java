@@ -27,15 +27,17 @@ public class JSONProvider extends MainActivity{
 	
 	String finalString;
 	
+	String passedInValue;
+	
 	
 	
 	
 	public String returnJsonData(String passedInUserInput){	
 		
-		
+		passedInValue = passedInUserInput;
 		// creation of url
-		String baseURL = "https://itunes.apple.com/search?term=";
-		String completeURL = baseURL + passedInUserInput + "&entity=musicArtist&limit=1";
+
+		String completeURL = "https://api.coindesk.com/v1/bpi/currentprice.json";
 		String as = "";
 	
 		try{
@@ -61,18 +63,12 @@ public class JSONProvider extends MainActivity{
 			}
 	
 	
-			return null;
+			return "nope";
 		}
 	
 	
 		// this actually sends out the request
 		public class infoRequest extends AsyncTask<URL, Void, String>{
-			
-			
-			
-			String artistName = "";
-			String primaryGenre = "";
-			String artistLinkUrl = "";
 
 			@Override
 			protected String doInBackground(URL... urls) {
@@ -87,27 +83,22 @@ public class JSONProvider extends MainActivity{
 			protected void onPostExecute(String result){
 				super.onPostExecute(result);
 				
+				
+				// setting up my JSONObjects
+				JSONObject jsonObject = null;
+				JSONObject resultsObject = null;
+				JSONObject currencyObject = null;
 				try {
 
-					Log.i("result", result);
+					jsonObject = new JSONObject(result);
+					resultsObject = jsonObject.getJSONObject("bpi");
 					
-					JSONObject json = new JSONObject(result);
-					JSONArray results = json.getJSONArray("results");
-	
-					artistName = results.getJSONObject(0).getString("artistName").toString();
-					primaryGenre = results.getJSONObject(0).getString("primaryGenreName").toString();
-					artistLinkUrl = results.getJSONObject(0).getString("artistLinkUrl").toString();
-	
-					String fullString = artistName + artistLinkUrl + primaryGenre;
+					// passing in user input to lookup
+					currencyObject = resultsObject.getJSONObject(passedInValue);
 					
+					String amount = currencyObject.getString("rate").toString();
 					
-					finalString = fullString;
-					
-					Log.i("name", artistName);
-					Log.i("name", primaryGenre);
-					Log.i("name", artistLinkUrl);
-					
-					
+					Log.i("amount", amount);
 					
 					
 					
@@ -118,7 +109,7 @@ public class JSONProvider extends MainActivity{
 					Log.e("Nope", "No such file");
 				}
 	
-				//Log.i("Yes", artistName);
+				
 	
 			}
 			

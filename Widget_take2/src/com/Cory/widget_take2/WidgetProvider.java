@@ -45,6 +45,13 @@ public class WidgetProvider extends AppWidgetProvider{
 			if(newFileManager.readStringFile(context, "currency_origin.txt") != null){
 				String currencyString = newFileManager.readStringFile(context, "currency_origin.txt");
 				Log.i("thing", currencyString);
+				
+				// not sure whats wrong here.  I am not getting a return from 
+				// my asyncTask
+				JSONProvider newJSONProvider = new JSONProvider();
+				newJSONProvider.returnJsonData("USD");
+				
+				
 			}
 			
 			
