@@ -8,23 +8,16 @@
  */
 package com.Cory.widget_take2;
 
-import com.Cory.JSON.FileManager;
-import com.Cory.JSON.JSON;
-import com.Cory.JSON.JSONProvider;
 
+
+import android.net.Uri;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
-import android.os.Messenger;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.Button;
+
 
 
 // this will house the main loading screen.
@@ -33,6 +26,7 @@ import android.widget.Button;
 public class MainActivity extends Activity {
 	
 	Context _context;
+	final String URI = "http://www.bitcoininformation.info";
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -41,12 +35,7 @@ public class MainActivity extends Activity {
 		
 		_context = this;
 
-		
-		
-	
 	}
-	
-
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
@@ -63,17 +52,15 @@ public class MainActivity extends Activity {
 		
 		switch (item.getItemId()){
 		case R.id.first:
-			// do something here
-			Log.i("First action bar selected", "True");
-			
-			Intent first = new Intent(this, About.class);
-			startActivity(first);
+
+			// goes to the bitcoininfo website
+			Intent newIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(this.URI));
+			startActivity(newIntent);
 			
 			return true;
 		case R.id.about:
-			// do something here
-			Log.i("About action bar selected", "True");
 			
+			// calls on the About activity
 			Intent about = new Intent(this, About.class);
 			startActivity(about);
 			
