@@ -36,7 +36,7 @@ public class WidgetProvider extends AppWidgetProvider{
 			RemoteViews remoteView = new RemoteViews(context.getPackageName(), R.layout.widget_layout);
 			
 			// this will display the modified amount
-			remoteView.setTextViewText(R.id.days_textview, "Yes!");
+			remoteView.setTextViewText(R.id.days_textview, "Updated");
 		
 			appWidgetManager.updateAppWidget(appWidgetId, remoteView);
 			
@@ -44,7 +44,7 @@ public class WidgetProvider extends AppWidgetProvider{
 			// json call
 			if(newFileManager.readStringFile(context, "currency_origin.txt") != null){
 				String currencyString = newFileManager.readStringFile(context, "currency_origin.txt");
-				Log.i("thing", currencyString);
+
 				
 				// not sure whats wrong here.  I am not getting a return from 
 				// my asyncTask

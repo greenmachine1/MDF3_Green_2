@@ -41,10 +41,7 @@ public class MainActivity extends Activity {
 			public void onClick(View v) {
 				
 				
-				JSONProvider newJSONProvider = new JSONProvider();
-				String newThing = newJSONProvider.returnJsonData("USD");
 				
-				Log.i("Yesss", newThing);
 				
 
 				}
