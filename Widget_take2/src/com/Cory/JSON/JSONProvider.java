@@ -10,6 +10,9 @@ import com.Cory.JSON.WebInfo;
 import com.Cory.widget_take2.MainActivity;
 import android.content.Context;
 import android.os.AsyncTask;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.util.Log;
 
 
@@ -21,6 +24,9 @@ public class JSONProvider extends MainActivity{
 	public static final Context Json = null;
 	String fileName = "json_string.txt";
 	FileManager fileManager;
+	
+	String finalString;
+	
 	
 	
 	
@@ -61,12 +67,13 @@ public class JSONProvider extends MainActivity{
 	
 		// this actually sends out the request
 		public class infoRequest extends AsyncTask<URL, Void, String>{
-	
+			
+			
+			
 			String artistName = "";
 			String primaryGenre = "";
 			String artistLinkUrl = "";
-	
-	
+
 			@Override
 			protected String doInBackground(URL... urls) {
 				String response = "";
@@ -78,9 +85,11 @@ public class JSONProvider extends MainActivity{
 			}
 			// this is what comes back!
 			protected void onPostExecute(String result){
+				super.onPostExecute(result);
 				
 				try {
-					
+
+					Log.i("result", result);
 					
 					JSONObject json = new JSONObject(result);
 					JSONArray results = json.getJSONArray("results");
@@ -92,17 +101,17 @@ public class JSONProvider extends MainActivity{
 					String fullString = artistName + artistLinkUrl + primaryGenre;
 					
 					
-					
+					finalString = fullString;
 					
 					Log.i("name", artistName);
 					Log.i("name", primaryGenre);
 					Log.i("name", artistLinkUrl);
-	
-	
-	
-	
-	
-	
+					
+					
+					
+					
+					
+
 				} catch (JSONException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -112,5 +121,9 @@ public class JSONProvider extends MainActivity{
 				//Log.i("Yes", artistName);
 	
 			}
+			
 		}
+
+
+		
 }

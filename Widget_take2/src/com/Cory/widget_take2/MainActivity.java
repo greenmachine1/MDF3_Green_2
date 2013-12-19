@@ -2,6 +2,7 @@ package com.Cory.widget_take2;
 
 import com.Cory.JSON.FileManager;
 import com.Cory.JSON.JSON;
+import com.Cory.JSON.JSONProvider;
 
 import android.os.Bundle;
 import android.os.Handler;
@@ -39,17 +40,15 @@ public class MainActivity extends Activity {
 			@Override
 			public void onClick(View v) {
 				
-
 				
+
 				}
 			
 		});
-		
-		
-		
-		
-		
+	
 	}
+	
+
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {

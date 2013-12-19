@@ -3,6 +3,7 @@ package com.Cory.widget_take2;
 
 import com.Cory.JSON.FileManager;
 import com.Cory.JSON.JSON;
+import com.Cory.JSON.JSONProvider;
 
 import android.app.Activity;
 import android.appwidget.AppWidgetManager;
@@ -39,10 +40,18 @@ public class WidgetProvider extends AppWidgetProvider{
 		
 			appWidgetManager.updateAppWidget(appWidgetId, remoteView);
 			
+			// this is used to get the currency so that I can use it for another
+			// json call
 			if(newFileManager.readStringFile(context, "currency_origin.txt") != null){
 				String currencyString = newFileManager.readStringFile(context, "currency_origin.txt");
 				Log.i("thing", currencyString);
 			}
+			
+			
+			
+			
+			
+			
 			
 		}
 		
