@@ -19,7 +19,7 @@ public class About extends Activity{
 		WebSettings webSettings = myWebView.getSettings();
 		webSettings.setJavaScriptEnabled(true); 
 		
-		myWebView.addJavascriptInterface(new WebAppInterface(this), "Android");
+		myWebView.addJavascriptInterface(new JSInterface(this), "Android");
 
 		myWebView.loadUrl("file:///android_asset/main.html");
 
