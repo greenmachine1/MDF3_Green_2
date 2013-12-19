@@ -1,7 +1,19 @@
-<input type="button" value="Say Hello" onclick="showAndroidToast('Hello android!')"/>
+
+<input type="text" id="userInput" value="input your name">
+
+<input type="text" id="userFeedBack" value="enter in some feedback">
+
+
+<input type="button" value="Enter" onclick="showAndroidToast()"/>
 
 <script type="text/javascript">
-function showAndroidToast(toast){
-	Android.uselessMethod("Yeppers");
+function showAndroidToast(){
+
+	var userName = document.getElementById('userInput');
+	var name = userName.value;
+	
+	var userFeedBack = document.getElementById('userFeedBack');
+	var feedBack = userFeedBack.value;
+	Android.uselessMethod(name + " " + feedBack);
 }
 </script>

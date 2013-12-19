@@ -19,7 +19,7 @@ public class WebAppInterface {
 	public void uselessMethod(String something){
 		Toast.makeText(_context, something, Toast.LENGTH_SHORT).show();
 
-		Log.i("useless", something);
+		
 	}
 	
 	
