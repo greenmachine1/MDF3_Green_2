@@ -1,6 +1,15 @@
+/*
+ * Author: 			Cory Green
+ * 
+ * Project:			Widget_take2
+ * 
+ * Date:			Dec 19, 2013
+ * 
+ */
 package com.Cory.widget_take2;
 
 import android.app.Activity;
+import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.renderscript.RenderScript.ContextType;
@@ -24,11 +33,11 @@ public class JSInterface extends Activity{
 		Toast.makeText(_context, name + " " + feedBack, Toast.LENGTH_SHORT).show();
 
 		try{
-			//Intent newIntent = new Intent(getBaseContext(), FeedBackActivity.class);
+			Intent newIntent = new Intent(getBaseContext(), FeedBackActivity.class);
 			//newIntent.putExtra("name", name);
 			//newIntent.putExtra("feedBack", feedBack);
 		
-			//startService(newIntent);
+			startActivity(newIntent);
 			
 		}catch(Exception e){
 			Log.e("error", e.getMessage().toString());

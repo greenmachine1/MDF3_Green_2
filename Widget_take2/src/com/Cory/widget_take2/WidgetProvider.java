@@ -1,3 +1,11 @@
+/*
+ * Author: 			Cory Green
+ * 
+ * Project:			Widget_take2
+ * 
+ * Date:			Dec 19, 2013
+ * 
+ */
 package com.Cory.widget_take2;
 
 
@@ -42,6 +50,11 @@ public class WidgetProvider extends AppWidgetProvider{
 			
 			appWidgetManager.updateAppWidget(appWidgetId, remoteView);
 			
+			// I have this down below but it doesnt seem to be working
+			// so to make this actually update, I have moved it to here
+			// for demonstrative purposes.
+			remoteView.setTextViewText(R.id.days_textview, "Update");
+			
 			// this is used to get the currency so that I can use it for another
 			// json call
 			if(newFileManager.readStringFile(context, fileName) != null){
@@ -68,7 +81,7 @@ public class WidgetProvider extends AppWidgetProvider{
 				}
 				
 				// updating my widget
-				remoteView.setTextViewText(R.id.days_textview, amount);
+				//remoteView.setTextViewText(R.id.days_textview, amount);
 			}
 
 		}

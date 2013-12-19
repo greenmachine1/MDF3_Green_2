@@ -1,3 +1,11 @@
+/*
+ * Author: 			Cory Green
+ * 
+ * Project:			Widget_take2
+ * 
+ * Date:			Dec 19, 2013
+ * 
+ */
 package com.Cory.widget_take2;
 
 import org.json.JSONObject;
@@ -6,9 +14,11 @@ import com.Cory.JSON.FileManager;
 import com.Cory.JSON.JSON;
 
 import android.app.Activity;
+import android.app.PendingIntent;
 import android.appwidget.AppWidgetManager;
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -37,6 +47,8 @@ public class WidgetConfigActivity extends Activity implements OnClickListener{
 	
 	String fileName = "JSON_file.txt";
 	FileManager newFileManager;
+	
+	final String URI = "http://www.coinbase.com";
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState){
@@ -85,8 +97,15 @@ public class WidgetConfigActivity extends Activity implements OnClickListener{
 			if(widgetId != AppWidgetManager.INVALID_APPWIDGET_ID){
 
 				
+				
 				// grabbing my widget text view and buttons
 				RemoteViews remoteView = new RemoteViews(this.getPackageName(),R.layout.widget_layout);
+				
+				Intent buttonIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(this.URI));
+				
+				PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, buttonIntent, 0);
+				
+				remoteView.setOnClickPendingIntent(R.id.button1, pendingIntent);
 				
 				// my handler.  Handles the return info
 				final Handler JsonHandler = new Handler(){

@@ -1,3 +1,11 @@
+/*
+ * Author: 			Cory Green
+ * 
+ * Project:			Widget_take2
+ * 
+ * Date:			Dec 19, 2013
+ * 
+ */
 package com.Cory.JSON;
 
 

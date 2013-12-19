@@ -1,3 +1,11 @@
+/*
+ * Author: 			Cory Green
+ * 
+ * Project:			Widget_take2
+ * 
+ * Date:			Dec 19, 2013
+ * 
+ */
 package com.Cory.widget_take2;
 
 import com.Cory.JSON.FileManager;
@@ -34,19 +42,7 @@ public class MainActivity extends Activity {
 		_context = this;
 
 		
-		Button goButton = (Button)this.findViewById(R.id.main_Button);
-		goButton.setOnClickListener(new OnClickListener(){
-
-			@Override
-			public void onClick(View v) {
-				
-				
-				
-				
-
-				}
-			
-		});
+		
 	
 	}
 	
