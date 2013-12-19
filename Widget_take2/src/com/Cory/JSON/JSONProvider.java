@@ -1,59 +1,116 @@
 package com.Cory.JSON;
 
-import android.app.Activity;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.net.URLEncoder;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+import com.Cory.JSON.WebInfo;
+import com.Cory.widget_take2.MainActivity;
 import android.content.Context;
-import android.content.Intent;
-import android.os.Handler;
-import android.os.Message;
-import android.os.Messenger;
+import android.os.AsyncTask;
+import android.util.Log;
 
-public class JSONProvider extends Activity{
+
+
+// this class will pull json data from apple api
+public class JSONProvider extends MainActivity{
+
+
+	public static final Context Json = null;
+	String fileName = "json_string.txt";
+	FileManager fileManager;
 	
-	public JSONProvider(){
-		super();
-	}
 	
-	public void OnHandle(){
-		
-	}
 	
-	Context _context;
-	
-	// my handler.  Handles the return info
-	final Handler JsonHandler = new Handler(){
+	public String returnJsonData(String passedInUserInput){	
 		
 		
-
-		@Override
-		public void handleMessage(Message message){
-			
-			// what gets returned from the called service
-			Object returnedObject = message.obj;
-			
-			// casting the object to a string
-			String returnedObjectString = returnedObject.toString();
-			
-			if(message.arg1 == RESULT_OK && returnedObject != null){
-
-				newFileManager.writeStringFile(_context, fileName, returnedObjectString);
-		        
-				parseJSONData(currencySelected);
-		       
+		// creation of url
+		String baseURL = "https://itunes.apple.com/search?term=";
+		String completeURL = baseURL + passedInUserInput + "&entity=musicArtist&limit=1";
+		String as = "";
+	
+		try{
+			as = URLEncoder.encode(completeURL, "UTF-8");
+		}catch(Exception e){
+			Log.e("Bad URL", "Encoding problem");
+			as = "";
+		}
+	
+		URL finalURL;
+		try{
+			// dont actually need my UTF-8 involved in the url
+			finalURL = new URL(completeURL);
+			infoRequest newRequest = new infoRequest();
+			newRequest.execute(finalURL);
+			if(newRequest != null){
+				return "Sure";
+			}
+	
+			}catch(MalformedURLException e){
+			Log.e("Bad Url", "malformed URL");
+			finalURL = null;
+			}
+	
+	
+			return null;
+		}
+	
+	
+		// this actually sends out the request
+		public class infoRequest extends AsyncTask<URL, Void, String>{
+	
+			String artistName = "";
+			String primaryGenre = "";
+			String artistLinkUrl = "";
+	
+	
+			@Override
+			protected String doInBackground(URL... urls) {
+				String response = "";
+				for(URL url: urls){
+					response = WebInfo.getURLStringResponse(url);
+				}
+	
+				return response;
+			}
+			// this is what comes back!
+			protected void onPostExecute(String result){
+				
+				try {
+					
+					
+					JSONObject json = new JSONObject(result);
+					JSONArray results = json.getJSONArray("results");
+	
+					artistName = results.getJSONObject(0).getString("artistName").toString();
+					primaryGenre = results.getJSONObject(0).getString("primaryGenreName").toString();
+					artistLinkUrl = results.getJSONObject(0).getString("artistLinkUrl").toString();
+	
+					String fullString = artistName + artistLinkUrl + primaryGenre;
+					
+					
+					
+					
+					Log.i("name", artistName);
+					Log.i("name", primaryGenre);
+					Log.i("name", artistLinkUrl);
+	
+	
+	
+	
+	
+	
+				} catch (JSONException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+					Log.e("Nope", "No such file");
+				}
+	
+				//Log.i("Yes", artistName);
+	
 			}
 		}
-		
-	}; 
-
-	
-	// creation of my messenger to the service
-	Messenger jsonMessenger = new Messenger(JsonHandler);
-	
-	Intent myServiceIntent = new Intent(_context, JSON.class);
-	
-	// basically this passes info to my service
-	myServiceIntent.putExtra("messenger", jsonMessenger);
-	startService(myServiceIntent);
-	
-
-
 }
