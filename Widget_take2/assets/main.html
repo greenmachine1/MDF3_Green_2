@@ -1,11 +1,11 @@
-
+<Body bgcolor="#E6E6FA">
 <input type="text" id="userInput" value="input your name">
 
 <input type="text" id="userFeedBack" value="enter in some feedback">
 
 
 <input type="button" value="Enter" onclick="showAndroidToast()"/>
-
+</Body>
 
 <script type="text/javascript">
 function showAndroidToast(){
@@ -15,6 +15,7 @@ function showAndroidToast(){
 	
 	var userFeedBack = document.getElementById('userFeedBack');
 	var feedBack = userFeedBack.value;
-	Android.uselessMethod(name ,feedBack);
+	
+	Android.someMethod(name ,feedBack);
 }
 </script>

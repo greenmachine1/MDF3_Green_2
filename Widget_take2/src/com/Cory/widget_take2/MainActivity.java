@@ -10,13 +10,26 @@ package com.Cory.widget_take2;
 
 
 
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.net.URLEncoder;
+
+import org.json.JSONObject;
+
+import com.Cory.JSON.WebInfo;
+
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
 
 
 
@@ -34,7 +47,7 @@ public class MainActivity extends Activity {
 		setContentView(R.layout.main);
 		
 		_context = this;
-
+		
 	}
 
 	@Override
@@ -42,6 +55,7 @@ public class MainActivity extends Activity {
 		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.main, menu);
 		return true;
+		
 	}
 	
 	

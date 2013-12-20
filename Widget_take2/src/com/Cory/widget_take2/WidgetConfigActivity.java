@@ -38,7 +38,6 @@ public class WidgetConfigActivity extends Activity implements OnClickListener{
 	Context _context;
 	
 	RadioGroup radioGroup1;
-	RadioGroup radioGroup2;
 	
 	String currencySelected;
 

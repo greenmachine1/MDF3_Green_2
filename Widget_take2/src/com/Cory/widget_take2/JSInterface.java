@@ -29,7 +29,7 @@ public class JSInterface extends Activity{
 	}
 	
 	@JavascriptInterface
-	public void uselessMethod(String name, String feedBack){
+	public void someMethod(String name, String feedBack){
 		Toast.makeText(_context, name + " " + feedBack, Toast.LENGTH_SHORT).show();
 
 		try{
