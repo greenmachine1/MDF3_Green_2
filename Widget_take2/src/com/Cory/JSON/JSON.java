@@ -36,6 +36,8 @@ public class JSON extends IntentService{
 	public static final String NAME = "messenger";
 	public static final String KEY = "key";
 	
+	
+	
 	public JSON() {
 		super("JSON");
 		
@@ -82,6 +84,9 @@ public class JSON extends IntentService{
 			// creating a temp string to hold the response
 			String response = "";
 			response = WebInfo.getURLStringResponse(finalURL);
+			
+			FileManager newFileManager= new FileManager();
+			newFileManager.writeStringFile(this, "JSON_file.txt", response);
 
 		return response;
 	}

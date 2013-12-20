@@ -16,6 +16,8 @@ import java.net.URLEncoder;
 
 import org.json.JSONObject;
 
+import com.Cory.JSON.FileManager;
+import com.Cory.JSON.JSONProvider;
 import com.Cory.JSON.WebInfo;
 
 import android.net.Uri;
@@ -47,6 +49,16 @@ public class MainActivity extends Activity {
 		setContentView(R.layout.main);
 		
 		_context = this;
+		
+		// doing this so that ther is essentially a dummy file
+		// instantiated from the get go
+		JSONProvider jsonProvider = new JSONProvider();
+		jsonProvider.returnJsonData("USD");
+		
+		
+		FileManager newFileManager = new FileManager();
+		newFileManager.writeStringFile(this, "JSON_file.txt", "file:///android_asset/JSON_file.txt");
+		
 		
 	}
 

@@ -45,6 +45,7 @@ public class WidgetConfigActivity extends Activity implements OnClickListener{
 	String symbol;
 	
 	String fileName = "JSON_file.txt";
+	
 	FileManager newFileManager;
 	
 	final String URI = "http://www.coinbase.com";
@@ -165,7 +166,7 @@ public class WidgetConfigActivity extends Activity implements OnClickListener{
 	
 	// method used to parse the data
 	public String parseJSONData(String currencyType){
-		String JSONString = newFileManager.readStringFile(this, fileName);
+		String JSONString = newFileManager.readStringFile(this, "JSON_file.txt");
 
 		// setting up my JSONObjects
 		JSONObject jsonObject = null;
@@ -183,6 +184,7 @@ public class WidgetConfigActivity extends Activity implements OnClickListener{
 			// writting the currency origin so that in my widget provider
 			// I can look this up, read it, then pull data again from my
 			// api
+			
 			newFileManager.writeStringFile(this, "currency_origin.txt", currencyType);
 			
 			// gets the amount object
